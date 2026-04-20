@@ -1,0 +1,131 @@
+---
+title: "Short Title of the Article"
+author:
+  - name: "First Author"
+    affiliations: "aff1"
+    roles:
+      - Conceptualization
+      - Methodology
+      - Writing - Original Draft
+    email: "author1@example.com"
+    attributes:
+      corresponding: true
+  - name: "Second Author"
+    affiliations: "aff1"
+    roles:
+      - Supervision
+      - Writing - Review & Editing
+    email: "author2@example.com"
+
+affiliations:
+  - id: "aff1"
+    name: "Department of Science, University of Examples"
+    city: "Tokyo"
+    country: "Japan"
+abstract: |
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+keywords:
+  - Lorem
+  - Ipsum
+  - Quarto
+  - Elsevier
+format:
+  elsevier-pdf:
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{pdflscape}
+    journal:
+      name: "Journal of Quantitative Lorem Ipsum"
+      formatting: preprint
+      model: 3p
+      cite-style: authoryear
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+source("tools/import_r_tools.R")
+```
+
+# Introduction
+
+This repository provides a highly automated, programmatic workflow for academic writing via Quarto [@smith2023].
+It replaces the traditional "copy and paste" approach with dynamic data embedding, guaranteeing strict reproducibility and minimizing human error when migrating analytical results from external scripts into the final manuscript.
+
+To achieve robust modularity, we employ a central data bridging directory (configured via `user-settings` in `_quarto.yml`, defaulting to `sample_data/`). Analysis pipelines (e.g., Python or R scripts) can blindly export their payloads into this folder, and the Quarto compiler will symmetrically bind and format them during document rendering.
+
+# Methods
+
+## Dynamic Data Embedding
+
+A foundational feature of this framework is the automated resolution of scalar outputs. Rather than hardcoding data points into the document body, external YAML dictionaries (`results.yaml`) are statically mounted into the native `R` environment upon compilation. 
+
+Custom YAML tags (e.g., `!Float`, `!Pval`) paired with vectorized type-matching handlers guarantee that results are rigorously rounded, stripped of leading zeros, and formulated to Elsevier manuscript standards without requiring sprawling inline parameter constraints.
+
+## Variable Injection Demo
+
+As a practical example, we can seamlessly print explicit statistics into the running text using R inline blocks. In our mock evaluation, the total sample size was $N = `r demographics$sample_size`$, and the mean age was $`r demographics$mean_age`$ years. 
+
+Our primary analysis demonstrated an effect size of $d = `r main_results$effect_size`$ ($p `r main_results$p_value1`$) with a sustained $R^2$ of $`r main_results$model_r2`$. We further verified granular correlations across the matrix: $r = `r main_results$corr1`$ ($p `r main_results$p_value2`$) and $r = `r main_results$corr2`$. All variables were imported asynchronously and bound via `tools/import_r_tools.R`.
+
+\clearpage
+::: {.landscape}
+
+# Tables
+
+::: {#tbl-example}
+
+```{r}
+make_table(table_data)
+```
+
+**Automated MultiIndex Tables.**\
+\
+This table compiles directly from `sample_data/table/table_data.csv`. The backend R scripts auto-detect CSV arrays dropped into the `table_dir`, mapping column string annotations (`::Index`, `::Float`) to natively construct nested booktabs without manual row-collapse logic. Note how $p$-values and mathematical strings like $\chi^2$ are cleanly resolved horizontally through the `make_table()` utility.
+
+:::
+
+\clearpage
+:::
+
+\clearpage
+
+# Figures
+
+::: {#fig-example}
+
+![](mock_plot.png)
+
+**Native Image Handling Pipeline.**\
+\
+When an external figure is exported into the `figure_dir` folder (`sample_data/figure`), Quarto handles the indexing, but the Elsevier LaTeX compiler notoriously struggles with nested relative paths. Our `tools/copy_figures.R` pre-flight hook actively solves this by transferring requested assets momentarily toward the root compilation context.
+:::
+
+\clearpage
+
+# Conclusion
+
+By isolating complex metadata extraction, tabular configuration, and figure management into the `tools/` backend loop, the user writing the actual `manuscript.qmd` is free to use pure Markdown functionality, guaranteeing publication-ready PDFs equipped with CRediT contribution trackers at every render sequence.
+
+# Acknowledgements
+
+The authors wish to thank the Quarto development community and the R Foundation for Statistical Computing for creating robust scholarly scaffolding tools.
+
+\clearpage
+# Author Contributions
+
+```{r}
+#| results: asis
+
+print_author_contributions()
+```
+
+\clearpage
+
+# References
+
+::: {#refs}
+:::

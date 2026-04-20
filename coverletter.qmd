@@ -1,0 +1,70 @@
+---
+author:
+  - name: Harry Potter
+    affiliations:
+      - name: Hogwarts Scholl of Magic and Wizardry
+        department: Gryffindor
+        city: Highlands
+        country: United Kingdom
+        email: harrypotter@hogwarts.edu
+handling-editor: Prof. Albus Dumbledore, Editor-in-Chief
+journal:
+  name: Transfiguration Today
+title: The History of Animagus
+
+reviewers:
+  recommend:
+  - name: Bathilda Bagshot
+    title: Prof.
+    affiliation: Independent Researcher
+    email: bagshot@gmail.com
+  - name: Amos Diggory
+    title: Mr.
+    affiliation: Ministry of Magic
+    email: a.diggory@mcreatures.gov.uk
+  exclude:
+  - name: Voldemort
+    title: Load.
+    affiliation: Death Eater
+    email: load.voldemort@deatheater.com
+  - name: Igor Karkaroff
+    title: Prof.
+    affiliation: Durmstrang Institute
+    email: igor.k@durmstrang.edu
+
+format:
+  jcletter-pdf:
+    wrap: preserve
+    keep-tex: true
+    execute:
+      eval: true
+      echo: false
+      output: asis
+---
+
+Dear Editor
+
+On behalf of my co-authors, I am writing to submit an original article for publication in _{{< meta journal.name >}}_ entitled, "{{< meta title >}}."
+
+In this study, we found the greatest something.
+
+It is very interesting and an important thing.
+
+We believe that this paper will be of interest to the readership of _{{< meta journal.name >}}_ because it is very very interesting.
+
+This manuscript has not been published previously in any form, nor is it under consideration by another journal.
+We have read and understand the journal's policies, and neither the manuscript nor the study violates any of these.
+We have had no prior discussions with a {{< meta journal.name >}} editorial Board Member about the work described in the manuscript.
+
+The two individuals named below would be well qualified to serve as reviewers of this manuscript:
+
+::: {#recommend}
+:::
+
+Finally, we respectfully request that you exclude the following individuals as referees, since they have exhibited bias against our work in the past.
+
+::: {#exclude}
+:::
+
+Sincerely yours,  
+{{< meta author >}}

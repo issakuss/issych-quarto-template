@@ -1,0 +1,10 @@
+.quarto/
+*_files/
+tex-source-files/
+*.pdf
+.DS_Store
+
+/.quarto/
+**/*.quarto_ipynb
+
+_extensions/quarto-journals/

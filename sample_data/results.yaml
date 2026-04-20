@@ -1,0 +1,19 @@
+# 別の分析プロジェクト（PythonやRのスクリプトなど）から自動生成されて保存される想定のYAMLファイル。
+# 開発・テスト用のため、このテンプレートリポジトリ内にサンプルとして保存しています。
+
+misc:
+  python_ver: !Str "3.11"
+
+demographics:
+  sample_size: !Int 1450
+  mean_age: !IntMean 35.42238
+  female_ratio: !Float 48.0028
+
+main_results:
+  p_value1: !Pval 0.0032
+  p_value2: !Pval 0.0001
+  effect_size: !Float 0.850004
+  model_r2: 0.7329488
+  included_size: 1320
+  corr1: !NGTO 0.49222222
+  corr2: !NGTO -0.3222222

@@ -1,0 +1,36 @@
+% ---
+% Sender Block and Date
+% ---
+\begin{flushright}
+$for(by-author)$
+$it.name.literal$
+$for(it.affiliations)$
+$if(it.department)$\\ $it.department$$endif$
+$if(it.name)$\\ $it.name$$endif$
+$if(it.city)$\\ $it.city$$if(it.country)$, $it.country$$endif$$else$$if(it.country)$\\ $it.country$$endif$$endif$
+$if(it.email)$\\ $it.email$$endif$
+$endfor$
+$if(it.email)$\\ $it.email$$endif$
+$endfor$
+
+\vspace{1.5em}
+$date$
+\end{flushright}
+
+\vspace{2.5em}
+
+% ---
+% Recipient Block
+% ---
+\begin{flushleft}
+$if(handling-editor)$
+$handling-editor$
+$else$
+Editorial Board
+$endif$
+$if(journal.name)$
+\\ \textit{$journal.name$}
+$endif$
+\end{flushleft}
+
+\vspace{2em}

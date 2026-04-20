@@ -1,0 +1,34 @@
+project:
+  type: default
+  pre-render:
+    - Rscript tools/copy_figures.R
+  post-render: 
+    - bash tools/remove_quarto_interim_files.sh
+    - bash tools/move_tex_source_files.sh
+
+execute:
+  echo: false
+  message: false
+  warning: false
+
+# テンプレート独自のカスタム設定（Quarto本体からは無視されます）
+user-settings:
+  results_file: sample_data/results.yaml
+  figure_dir: sample_data/figure
+  table_dir: sample_data/table
+  float_digits: 2           # !Float タグの小数点以下の桁数
+  intmean_digits: 1         # !IntMean タグの小数点以下の桁数（整数の平均値やSDなど）
+  pval_digits: 3            # !Pval タグの小数点以下の桁数
+  min_pval: 0.001           # !Pval でこの値未満の場合は < 0.001 (設定に従い頭の0は省略)などと表記
+  ngto_digits: 3            # !NGTO タグの小数点以下の桁数（相関係数や1を超えない数値など）
+  omit_leading_zero: true   # trueの場合、!NGTO や !Pval の先頭の0を省略（0.49 -> .49）
+  spell_out_ints_under: 10  # !Int がこの値未満の場合は英単語（例: seven）にする
+
+  abbreviations:
+    # 以下はサンプルです。ご自身の論文に合わせて書き換えてください。
+    cont: Control
+    grp_a: Group A
+    grp_b: Group B
+    base: Baseline
+    r_pearson: \textit{r}\textsubscript{Pearson}
+    chi2_stat: $\chi^2$
