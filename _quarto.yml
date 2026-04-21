@@ -6,6 +6,7 @@ project:
     - Rscript tools/embed_bbl.R
     - bash tools/move_tex_source_files.sh
     - bash tools/remove_quarto_interim_files.sh
+    - Rscript tools/generate_diff.R
 
 execute:
   echo: false
@@ -14,6 +15,7 @@ execute:
 
 # テンプレート独自のカスタム設定（Quarto本体からは無視されます）
 user-settings:
+  diff_target: ""           # latexdiffでの比較対象コミットやブランチ（例: "HEAD~1"）。空欄でスキップ。
   embed_bbl: true           # trueの場合、レンダリング後に .tex 中の \bibliography を .bbl の中身で置換します
   results_file: sample_data/results.yaml
   figure_dir: sample_data/figure
