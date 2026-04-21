@@ -32,6 +32,7 @@ keywords:
 format:
   elsevier-pdf:
     keep-tex: true
+    latex-clean: false
     include-in-header:
       - text: |
           \usepackage{pdflscape}

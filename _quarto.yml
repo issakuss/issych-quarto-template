@@ -3,8 +3,9 @@ project:
   pre-render:
     - Rscript tools/copy_figures.R
   post-render: 
-    - bash tools/remove_quarto_interim_files.sh
+    - Rscript tools/embed_bbl.R
     - bash tools/move_tex_source_files.sh
+    - bash tools/remove_quarto_interim_files.sh
 
 execute:
   echo: false
@@ -13,6 +14,7 @@ execute:
 
 # テンプレート独自のカスタム設定（Quarto本体からは無視されます）
 user-settings:
+  embed_bbl: true           # trueの場合、レンダリング後に .tex 中の \bibliography を .bbl の中身で置換します
   results_file: sample_data/results.yaml
   figure_dir: sample_data/figure
   table_dir: sample_data/table
