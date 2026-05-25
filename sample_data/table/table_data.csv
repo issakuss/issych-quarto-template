@@ -1,4 +1,4 @@
-!Index,!Index,mean_val!Float,sd_val,r_pearson!NGTO,p_corr!Pval,chi2_stat!Float
+!iqIndex,!iqIndex,mean_val!iqFloat,sd_val,r_pearson!iqNGTO,p_corr!iqPval,chi2_stat!iqFloat
 cont,base,18.238472,1.218392,0.1238472,0.3458291,15.234
 cont,treat,22.193822,1.529384,0.2341923,0.0125829,18.991
 grp_a,base,24.318392,1.829103,-0.0523812,0.8841923,8.123

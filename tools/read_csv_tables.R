@@ -24,7 +24,7 @@ format_table <- function(df) {
       name_part <- parts[1] # 例: orig_name=="!Str" の時は "" になる
       type_part <- parts[2]
       
-      if (type_part == "Index") {
+      if (type_part == "iqIndex") {
         index_cols <- c(index_cols, i)
       }
       

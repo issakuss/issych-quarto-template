@@ -250,7 +250,7 @@ scalar outputs. Rather than hardcoding data points into the document
 body, external YAML dictionaries (\texttt{results.yaml}) are statically
 mounted into the native \texttt{R} environment upon compilation.
 
-Custom YAML tags (e.g., \texttt{!Float}, \texttt{!Pval}) paired with
+Custom YAML tags (e.g., \texttt{!iqFloat}, \texttt{!iqPval}) paired with
 vectorized type-matching handlers guarantee that results are rigorously
 rounded, stripped of leading zeros, and formulated to Elsevier
 manuscript standards without requiring sprawling inline parameter
@@ -281,7 +281,7 @@ asynchronously and bound via \texttt{tools/import\_r\_tools.R}.
 This table compiles directly from
 \texttt{sample\_data/table/table\_data.csv}. The backend R scripts
 auto-detect CSV arrays dropped into the \texttt{table\_dir}, mapping
-column string annotations (\texttt{::Index}, \texttt{::Float}) to
+column string annotations (\texttt{::iqIndex}, \texttt{::iqFloat}) to
 natively construct nested booktabs without manual row-collapse logic.
 Note how \(p\)-values and mathematical strings like \(\chi^2\) are
 cleanly resolved horizontally through the \texttt{make\_table()}

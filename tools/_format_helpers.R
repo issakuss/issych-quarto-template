@@ -83,21 +83,21 @@ format_pval <- function(val, fmt, min_val, omit_zero) {
 # -------------------------------------------------------------------------
 # YAMLのカスタムタグに対する処理（ハンドラ）を定義します
 my_handlers <- list(
-  "Float"   = function(x) { sprintf(fmt_float, as.numeric(x)) },
-  "IntMean" = function(x) { sprintf(fmt_intmean, as.numeric(x)) },
-  "Int"   = function(x) { int_to_word(as.integer(x), spell_out_under) },
-  "NGTO"  = function(x) { format_ngto(x, fmt_ngto, omit_zero) },
-  "Pval"  = function(x) { format_pval(x, fmt_pval, min_pval, omit_zero) },
-  "Str"   = function(x) { as.character(x) }
+  "iqFloat"   = function(x) { sprintf(fmt_float, as.numeric(x)) },
+  "iqIntMean" = function(x) { sprintf(fmt_intmean, as.numeric(x)) },
+  "iqInt"     = function(x) { int_to_word(as.integer(x), spell_out_under) },
+  "iqNGTO"    = function(x) { format_ngto(x, fmt_ngto, omit_zero) },
+  "iqPval"    = function(x) { format_pval(x, fmt_pval, min_pval, omit_zero) },
+  "iqStr"     = function(x) { as.character(x) }
 )
 
 # テーブルフォーマット用の専用ハンドラ（「=」を出力しない等の微調整用）
 table_handlers <- list(
-  "Float"   = function(x) { sprintf(fmt_float, as.numeric(x)) },
-  "IntMean" = function(x) { sprintf(fmt_intmean, as.numeric(x)) },
-  "Int"   = function(x) { int_to_word(as.integer(x), spell_out_under) },
-  "NGTO"  = function(x) { format_ngto(x, fmt_ngto, omit_zero) },
-  "Pval"  = function(x) { format_pval(x, fmt_pval_table, min_pval, omit_zero) },
-  "Index" = function(x) { apply_abbreviations(as.character(x)) },
-  "Str"   = function(x) { apply_abbreviations(as.character(x)) }
+  "iqFloat"   = function(x) { sprintf(fmt_float, as.numeric(x)) },
+  "iqIntMean" = function(x) { sprintf(fmt_intmean, as.numeric(x)) },
+  "iqInt"     = function(x) { int_to_word(as.integer(x), spell_out_under) },
+  "iqNGTO"    = function(x) { format_ngto(x, fmt_ngto, omit_zero) },
+  "iqPval"    = function(x) { format_pval(x, fmt_pval_table, min_pval, omit_zero) },
+  "iqIndex"   = function(x) { apply_abbreviations(as.character(x)) },
+  "iqStr"     = function(x) { apply_abbreviations(as.character(x)) }
 )

@@ -64,7 +64,7 @@ To achieve robust modularity, we employ a central data bridging directory (confi
 
 A foundational feature of this framework is the automated resolution of scalar outputs. Rather than hardcoding data points into the document body, external YAML dictionaries (`results.yaml`) are statically mounted into the native `R` environment upon compilation. 
 
-Custom YAML tags (e.g., `!Float`, `!Pval`) paired with vectorized type-matching handlers guarantee that results are rigorously rounded, stripped of leading zeros, and formulated to Elsevier manuscript standards without requiring sprawling inline parameter constraints.
+Custom YAML tags (e.g., `!iqFloat`, `!iqPval`) paired with vectorized type-matching handlers guarantee that results are rigorously rounded, stripped of leading zeros, and formulated to Elsevier manuscript standards without requiring sprawling inline parameter constraints.
 
 ## Variable Injection Demo
 
@@ -85,7 +85,7 @@ make_table(table_data)
 
 **Automated MultiIndex Tables.**\
 \
-This table compiles directly from `sample_data/table/table_data.csv`. The backend R scripts auto-detect CSV arrays dropped into the `table_dir`, mapping column string annotations (`::Index`, `::Float`) to natively construct nested booktabs without manual row-collapse logic. Note how $p$-values and mathematical strings like $\chi^2$ are cleanly resolved horizontally through the `make_table()` utility.
+This table compiles directly from `sample_data/table/table_data.csv`. The backend R scripts auto-detect CSV arrays dropped into the `table_dir`, mapping column string annotations (`::iqIndex`, `::iqFloat`) to natively construct nested booktabs without manual row-collapse logic. Note how $p$-values and mathematical strings like $\chi^2$ are cleanly resolved horizontally through the `make_table()` utility.
 
 :::
 

@@ -26,7 +26,7 @@ Quarto を用いて学術論文を執筆し、論文誌に投稿してからア�
 ターミナルで論文の執筆先となる空ディレクトリに移動し、以下のコマンドを実行してください。
 
 ```bash
-quarto use template issakuss/issych-quarto
+quarto use template issakuss/issych-quarto-template
 ```
 
 ### `.gitignore` の推奨設定
@@ -53,35 +53,35 @@ quarto add quarto-journals/elsevier
 プロジェクトを開始したら、まず `_quarto.yml` の `user-settings` 内にある項目を書き換えてください。
  `results_file` や `figure_dir` のパス、有効数字（`float_digits`）の桁数などの設定を、ご自身の解析出力データに合わせて変更してください。
 
-### issych-quarto に対応するデータ出力 (型の指定)
+### issych-quarto-template に対応するデータ出力 (型の指定)
 本テンプレートは、解析スクリプト（RやPythonなど）から出力する YAML や CSV データに対して、特別な**データ型（カスタムタグ）**を明記することで威力を発揮します。
 これにより、「p値が極端に小さい場合は `< .001` と表記する」「相関係数の先頭の `0` を省く」「先頭の小さな数値を英単語にする」といった論文特有の面倒なフォーマット処理を Quarto 側が自動で行います。
 
 **【サポートされている型（タグ）の一覧】**
-* `!Int` (整数): 通常の整数として扱います。`_quarto.yml` の `spell_out_ints_under`（デフォルト10）を下回る数字である場合、自動的に英単語（例: `7` → `seven`）に置換されます。
-* `!Float` (通常の小数): `float_digits`（デフォルト2桁）に合わせて自動で四捨五入およびゼロ埋めが行われます。
-* `!IntMean` (整数尺度の平均値・SD): 整数で測定されたデータの平均値や標準偏差など、通常の推測統計量より少ない桁数で表記すべき記述統計量に使用します。`intmean_digits`（デフォルト1桁）に合わせて自動調整されます。
-* `!NGTO` (絶対値が 1.0 を超えない値: Not to be Greater Than One): `ngto_digits` に合わせて桁数調整されます。`omit_leading_zero` が有効な場合、先頭のゼロが自動的に省かれます（例: `0.45` → `.45`）。
-* `!Pval` (p値): `pval_digits` に合わせて桁数調整されます。設定された `min_pval`（デフォルト `0.001`）を下回った場合、自動的に `< .001` のような不等号表記に置き換えられます。
-* `!Str` (文字列): 文字列としてそのまま出力します。なお、`_quarto.yml` の `abbreviations` に登録されているキーと完全一致した場合は、正式名称（やLaTeX数学記号等）へ自動置換・エスケープされて出力されます。
+* `!iqInt` (整数): 通常の整数として扱います。`_quarto.yml` の `spell_out_ints_under`（デフォルト10）を下回る数字である場合、自動的に英単語（例: `7` → `seven`）に置換されます。
+* `!iqFloat` (通常の小数): `float_digits`（デフォルト2桁）に合わせて自動で四捨五入およびゼロ埋めが行われます。
+* `!iqIntMean` (整数尺度の平均値・SD): 整数で測定されたデータの平均値や標準偏差など、通常の推測統計量より少ない桁数で表記すべき記述統計量に使用します。`intmean_digits`（デフォルト1桁）に合わせて自動調整されます。
+* `!iqNGTO` (絶対値が 1.0 を超えない値: Not to be Greater Than One): `ngto_digits` に合わせて桁数調整されます。`omit_leading_zero` が有効な場合、先頭のゼロが自動的に省かれます（例: `0.45` → `.45`）。
+* `!iqPval` (p値): `pval_digits` に合わせて桁数調整されます。設定された `min_pval`（デフォルト `0.001`）を下回った場合、自動的に `< .001` のような不等号表記に置き換えられます。
+* `!iqStr` (文字列): 文字列としてそのまま出力します。なお、`_quarto.yml` の `abbreviations` に登録されているキーと完全一致した場合は、正式名称（やLaTeX数学記号等）へ自動置換・エスケープされて出力されます。
 
 **【具体的な出力例 (YAMLの場合)】**
 ```yaml
 demographics:
-  sample_size: !Int 1450
-  mean_age: !IntMean 35.42238
-  p_value: !Pval 0.0001
+  sample_size: !iqInt 1450
+  mean_age: !iqIntMean 35.42238
+  p_value: !iqPval 0.0001
 ```
 
 **【具体的な出力例 (CSVテーブルの場合)】**
 CSV の場合、表の1行目（ヘッダー行）の列名の末尾に `!型` を付与します（YAMLの記載方法と同じく `!` を使います）。
 ```csv
-Variable!Index, Mean!Float, p-value!Pval
+Variable!iqIndex, Mean!iqFloat, p-value!iqPval
 grp_a, 45.123, 0.045
 ```
-`!Index` は列の型を指定するとき専用の型です。
-`!Str` と同様、略語置換が適用されます。
-また、複数の `!Index` がある場合、それらが結合されて、綺麗なマルチインデックスとして表示されます。
+`!iqIndex` は列の型を指定するとき専用の型です。
+`!iqStr` と同様、略語置換が適用されます。
+また、複数の `!iqIndex` がある場合、それらが結合されて、綺麗なマルチインデックスとして表示されます。
 
 ---
 
