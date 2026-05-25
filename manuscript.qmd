@@ -1,43 +1,53 @@
 ---
-title: "Short Title of the Article"
+title: An Empirical Study of Animagus Transformations and Their Metabolic Signatures
 author:
-  - name: "First Author"
-    affiliations: "aff1"
+  - name: Harry Potter
+    affiliations:
+      - ref: hogwarts
+      - ref: ministry
     roles:
       - Conceptualization
       - Methodology
       - Writing - Original Draft
-    email: "author1@example.com"
+    email: harrypotter@hogwarts.edu
     attributes:
       corresponding: true
-  - name: "Second Author"
-    affiliations: "aff1"
+  - name: Hermione Granger
+    affiliations: ministry
     roles:
       - Supervision
       - Writing - Review & Editing
-    email: "author2@example.com"
+    email: hermione.granger@ministryofmagic.gov.uk
 
 affiliations:
-  - id: "aff1"
-    name: "Department of Science, University of Examples"
-    city: "Tokyo"
-    country: "Japan"
+  - id: hogwarts
+    name: Hogwarts School of Witchcraft and Wizardry
+    department: Gryffindor House
+    city: Highlands
+    country: United Kingdom
+  - id: ministry
+    name: Ministry of Magic
+    department: Department of Magical Law Enforcement
+    city: London
+    country: United Kingdom
 abstract: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  Animagus transformation represents one of the most advanced branches of Transfiguration. While the qualitative protocols for achieving such transformations are well-documented, the underlying metabolic pathways and physiological signatures remain poorly understood. In this study, we monitor the metabolic activity of seasoned Animagi during the transition between human and animal forms. Our findings demonstrate a temporary but significant spike in magical energy consumption and local molecular transmutations, which are tightly regulated by standard transfiguration equations. This research provides a novel quantitative foundation for the biophysics of magical shapeshifting.
 keywords:
-  - Lorem
-  - Ipsum
-  - Quarto
-  - Elsevier
+  - Transfiguration
+  - Animagus
+  - Hogwarts
+  - Magic
 format:
   elsevier-pdf:
+    echo: false
+    wrap: preserve
     keep-tex: true
     latex-clean: false
     include-in-header:
       - text: |
           \usepackage{pdflscape}
     journal:
-      name: "Journal of Quantitative Lorem Ipsum"
+      name: Transfiguration Today
       formatting: preprint
       model: 3p
       cite-style: authoryear
