@@ -9,10 +9,9 @@
 library(yaml)
 
 # -------------------------------------------------------------------------
-# 2. _quarto.yml から独自のカスタム設定を読み込む
+# 2. user-settings.yaml から独自のカスタム設定を読み込む
 # -------------------------------------------------------------------------
-quarto_config <- read_yaml("_quarto.yml")
-settings      <- quarto_config$`user-settings`
+settings      <- read_yaml("user-settings.yaml")
 abbreviations <- settings$abbreviations
 
 # 安全なフォールバックを伴う設定値の抽出

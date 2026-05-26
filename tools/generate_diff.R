@@ -8,14 +8,14 @@
 
 library(yaml)
 
-config_path <- "_quarto.yml"
+config_path <- "user-settings.yaml"
 if (!file.exists(config_path)) {
   quit(save = "no", status = 0)
 }
 
 config <- tryCatch(yaml::read_yaml(config_path), error = function(e) list())
 
-diff_target <- config$`user-settings`$diff_target
+diff_target <- config$diff_target
 
 if (is.null(diff_target) || trimws(diff_target) == "") {
   message("Skipping latexdiff: diff_target is empty or not set.")

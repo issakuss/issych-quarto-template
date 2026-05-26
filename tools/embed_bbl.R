@@ -8,15 +8,15 @@
 
 library(yaml)
 
-config_path <- "_quarto.yml"
+config_path <- "user-settings.yaml"
 if (!file.exists(config_path)) {
-  message("Warning: _quarto.yml not found. Skipping bbl embedding.")
+  message("Warning: user-settings.yaml not found. Skipping bbl embedding.")
   quit(save = "no", status = 0)
 }
 
 config <- tryCatch(yaml::read_yaml(config_path), error = function(e) list())
 
-embed_flag <- config$`user-settings`$embed_bbl
+embed_flag <- config$embed_bbl
 if (!is.null(embed_flag) && isTRUE(embed_flag)) {
   message("Embedding .bbl into .tex (embed_bbl is TRUE)...")
   

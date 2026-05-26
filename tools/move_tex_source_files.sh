@@ -28,7 +28,7 @@ for file in *.bib; do
 done
 
 # 6. pre-renderでルートディレクトリに一時コピーされた画像ファイルを tex-source-files/ に回収する
-FIGURE_DIR=$(Rscript -e 'cat(yaml::read_yaml("_quarto.yml")$"user-settings"$"figure_dir")' 2>/dev/null)
+FIGURE_DIR=$(Rscript -e 'cat(yaml::read_yaml("user-settings.yaml")$"figure_dir")' 2>/dev/null)
 if [ -n "$FIGURE_DIR" ] && [ -d "$FIGURE_DIR" ]; then
   for file in "$FIGURE_DIR"/*; do
     if [ -f "$file" ]; then

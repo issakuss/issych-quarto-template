@@ -55,14 +55,35 @@ make_table <- function(df, note = NULL) {
   
   if (!is.null(idx_cols) && length(idx_cols) > 0) {
     out <- kbl(df, booktabs = TRUE, escape = FALSE) |>
-      collapse_rows(columns = idx_cols, valign = "top", latex_hline = "none")
+      collapse_rows(columns = idx_cols, valign = "top", latex_hline = "linespace")
   } else {
     out <- kbl(df, booktabs = TRUE, escape = FALSE)
   }
   
   if (!is.null(note)) {
-    # 3パートテーブルとしてfootnoteを追加（escape=FALSEでLaTeX記法を通す）
+    # 3パートテーブルとしてfootnoteを追加（escape=FALSEしLaTeX記法を通す）
     out <- out |> footnote(general = note, threeparttable = TRUE, escape = FALSE)
+  }
+  
+  # user-settings.yaml の defaultaddspace が設定されている場合、
+  # テーブル出力の直前に \setlength{\defaultaddspace}{...} を挿入して動的に反映させる
+  gap_space <- settings$defaultaddspace
+  if (!is.null(gap_space) && gap_space != "") {
+    prefix <- paste0("\\setlength{\\defaultaddspace}{", gap_space, "}\n")
+    attrs <- attributes(out)
+    out <- paste0(prefix, out)
+    attributes(out) <- attrs
+  }
+  
+  # user-settings.yaml の table_arraystretch が設定されている場合、
+  # テーブル全体の行の高さ（行間）を変更する（環境を \begingroup ... \endgroup で囲いスコープを閉じる）
+  arraystretch <- settings$table_arraystretch
+  if (!is.null(arraystretch) && arraystretch != "") {
+    prefix <- paste0("\\begingroup\\renewcommand{\\arraystretch}{", arraystretch, "}\n")
+    suffix <- "\n\\endgroup\n"
+    attrs <- attributes(out)
+    out <- paste0(prefix, out, suffix)
+    attributes(out) <- attrs
   }
   
   return(out)

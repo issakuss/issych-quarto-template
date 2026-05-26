@@ -8,8 +8,7 @@
 # -------------------------------------------------------------------------
 library(yaml)
 
-quarto_config <- read_yaml("_quarto.yml")
-settings <- quarto_config$`user-settings`
+settings <- read_yaml("user-settings.yaml")
 
 if (!is.null(settings) && !is.null(settings$figure_dir)) {
   fig_dir <- settings$figure_dir

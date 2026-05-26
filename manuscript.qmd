@@ -13,7 +13,8 @@ author:
     attributes:
       corresponding: true
   - name: Hermione Granger
-    affiliations: ministry
+    affiliations:
+      - ref: ministry
     roles:
       - Supervision
       - Writing - Review & Editing
@@ -39,19 +40,18 @@ keywords:
   - Magic
 format:
   elsevier-pdf:
-    echo: false
-    wrap: preserve
-    keep-tex: true
-    latex-clean: false
-    include-in-header:
-      - text: |
-          \usepackage{pdflscape}
     journal:
       name: Transfiguration Today
       formatting: preprint
       model: 3p
       cite-style: authoryear
-bibliography: references.bib
+    # 以下の設定は変更しないでください
+    keep-tex: true
+    latex-clean: false
+    wrap: preserve
+    include-in-header:
+      - text: |
+          \usepackage{pdflscape}
 ---
 
 ```{r}
@@ -83,9 +83,13 @@ As a practical example, we can seamlessly print explicit statistics into the run
 Our primary analysis demonstrated an effect size of $d = `r main_results$effect_size`$ ($p `r main_results$p_value1`$) with a sustained $R^2$ of $`r main_results$model_r2`$. We further verified granular correlations across the matrix: $r = `r main_results$corr1`$ ($p `r main_results$p_value2`$) and $r = `r main_results$corr2`$. All variables were imported asynchronously and bound via `tools/import_r_tools.R`.
 
 \clearpage
-::: {.landscape}
 
 # Tables
+
+\clearpage
+
+::: {.landscape}
+
 
 ::: {#tbl-example}
 

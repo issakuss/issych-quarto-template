@@ -1,0 +1,31 @@
+# ファイルパス設定
+results_file: sample_data/results.yaml
+figure_dir: sample_data/figure
+table_dir: sample_data/table
+
+# 数値のフォーマット設定
+float_digits: 2           # !iqFloat タグの小数点以下の桁数
+intmean_digits: 1         # !iqIntMean タグの小数点以下の桁数（整数の平均値やSDなど）
+pval_digits: 3            # !iqPval タグの小数点以下の桁数
+min_pval: 0.001           # !iqPval でこの値未満の場合は < 0.001 (設定に従い頭の0は省略)などと表記
+ngto_digits: 3            # !iqNGTO タグの小数点以下の桁数（相関係数や1を超えない数値など）
+omit_leading_zero: true   # trueの場合、!iqNGTO や !iqPval の先頭の0を省略（0.49 -> .49）
+spell_out_ints_under: 10  # !iqInt がこの値未満の場合は英単語（例: seven）にする
+
+# 表のフォーマット設定
+defaultaddspace: "1.0em"  # マルチインデックス行間の余白サイズ（例: 0.5em, 1.0em, 10pt）
+table_arraystretch: 1.15  # テーブル全体の行間（高さ）の倍率（デフォルト: 1.0, 推奨: 1.1 - 1.25）
+
+# そのほかの設定
+diff_target: ""           # latexdiffでの比較対象コミットやブランチ（例: "HEAD~1"）。空欄でスキップ。
+embed_bbl: true           # trueの場合、レンダリング後に .tex 中の \bibliography を .bbl の中身で置換します
+
+# 表の省略形定義
+abbreviations:
+  # 以下はサンプルです。ご自身の論文に合わせて書き換えてください。
+  cont: Control
+  grp_a: Group A
+  grp_b: Group B
+  base: Baseline
+  r_pearson: \textit{r}\textsubscript{Pearson}
+  chi2_stat: $\chi^2$

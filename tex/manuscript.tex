@@ -186,8 +186,7 @@
 \begin{document}
 
 \begin{frontmatter}
-\title{An Empirical Study of Animagus Transformations and Their
-Metabolic Signatures}
+\title{An Empirical Study of Animagus Transformations and Their Metabolic Signatures}
 \author[1,2]{Harry Potter%
 \corref{cor1}%
 }
@@ -197,28 +196,15 @@ Metabolic Signatures}
 }
  \ead{hermione.granger@ministryofmagic.gov.uk} 
 
-\affiliation[1]{organization={Hogwarts School of Witchcraft and
-Wizardry, Gryffindor House},city={Highlands},country={United
-Kingdom},countrysep={,},postcodesep={}}
-\affiliation[2]{organization={Ministry of Magic, Department of Magical
-Law Enforcement},city={London},country={United
-Kingdom},countrysep={,},postcodesep={}}
+\affiliation[1]{organization={Hogwarts School of Witchcraft and Wizardry, Gryffindor House},city={Highlands},country={United Kingdom},countrysep={,},postcodesep={}}
+\affiliation[2]{organization={Ministry of Magic, Department of Magical Law Enforcement},city={London},country={United Kingdom},countrysep={,},postcodesep={}}
 
 \cortext[cor1]{Corresponding author}
 
 
         
 \begin{abstract}
-Animagus transformation represents one of the most advanced branches of
-Transfiguration. While the qualitative protocols for achieving such
-transformations are well-documented, the underlying metabolic pathways
-and physiological signatures remain poorly understood. In this study, we
-monitor the metabolic activity of seasoned Animagi during the transition
-between human and animal forms. Our findings demonstrate a temporary but
-significant spike in magical energy consumption and local molecular
-transmutations, which are tightly regulated by standard transfiguration
-equations. This research provides a novel quantitative foundation for
-the biophysics of magical shapeshifting.
+Animagus transformation represents one of the most advanced branches of Transfiguration. While the qualitative protocols for achieving such transformations are well-documented, the underlying metabolic pathways and physiological signatures remain poorly understood. In this study, we monitor the metabolic activity of seasoned Animagi during the transition between human and animal forms. Our findings demonstrate a temporary but significant spike in magical energy consumption and local molecular transmutations, which are tightly regulated by standard transfiguration equations. This research provides a novel quantitative foundation for the biophysics of magical shapeshifting.
 \end{abstract}
 
 
@@ -234,67 +220,43 @@ the biophysics of magical shapeshifting.
 
 \section{Introduction}\label{introduction}
 
-This repository provides a highly automated, programmatic workflow for
-academic writing via Quarto \citep{smith2023}. It replaces the
-traditional ``copy and paste'' approach with dynamic data embedding,
-guaranteeing strict reproducibility and minimizing human error when
-migrating analytical results from external scripts into the final
-manuscript.
+This repository provides a highly automated, programmatic workflow for academic writing via Quarto \citep{smith2023}.
+It replaces the traditional ``copy and paste'' approach with dynamic data embedding, guaranteeing strict reproducibility and minimizing human error when migrating analytical results from external scripts into the final manuscript.
 
-To achieve robust modularity, we employ a central data bridging
-directory (configured via \texttt{user-settings} in
-\texttt{\_quarto.yml}, defaulting to \texttt{sample\_data/}). Analysis
-pipelines (e.g., Python or R scripts) can blindly export their payloads
-into this folder, and the Quarto compiler will symmetrically bind and
-format them during document rendering.
+To achieve robust modularity, we employ a central data bridging directory (configured via \texttt{user-settings} in \texttt{\_quarto.yml}, defaulting to \texttt{sample\_data/}). Analysis pipelines (e.g., Python or R scripts) can blindly export their payloads into this folder, and the Quarto compiler will symmetrically bind and format them during document rendering.
 
 \section{Methods}\label{methods}
 
 \subsection{Dynamic Data Embedding}\label{dynamic-data-embedding}
 
-A foundational feature of this framework is the automated resolution of
-scalar outputs. Rather than hardcoding data points into the document
-body, external YAML dictionaries (\texttt{results.yaml}) are statically
-mounted into the native \texttt{R} environment upon compilation.
+A foundational feature of this framework is the automated resolution of scalar outputs. Rather than hardcoding data points into the document body, external YAML dictionaries (\texttt{results.yaml}) are statically mounted into the native \texttt{R} environment upon compilation.
 
-Custom YAML tags (e.g., \texttt{!iqFloat}, \texttt{!iqPval}) paired with
-vectorized type-matching handlers guarantee that results are rigorously
-rounded, stripped of leading zeros, and formulated to Elsevier
-manuscript standards without requiring sprawling inline parameter
-constraints.
+Custom YAML tags (e.g., \texttt{!iqFloat}, \texttt{!iqPval}) paired with vectorized type-matching handlers guarantee that results are rigorously rounded, stripped of leading zeros, and formulated to Elsevier manuscript standards without requiring sprawling inline parameter constraints.
 
 \subsection{Variable Injection Demo}\label{variable-injection-demo}
 
-As a practical example, we can seamlessly print explicit statistics into
-the running text using R inline blocks. In our mock evaluation, the
-total sample size was \(N = 1450\), and the mean age was \(35.4\) years.
+As a practical example, we can seamlessly print explicit statistics into the running text using R inline blocks. In our mock evaluation, the total sample size was \(N = 1450\), and the mean age was \(35.4\) years.
 
-Our primary analysis demonstrated an effect size of \(d = 0.85\)
-(\(p = .003\)) with a sustained \(R^2\) of \(0.7329488\). We further
-verified granular correlations across the matrix: \(r = .492\)
-(\(p < .001\)) and \(r = -.322\). All variables were imported
-asynchronously and bound via \texttt{tools/import\_r\_tools.R}.
+Our primary analysis demonstrated an effect size of \(d = 0.85\) (\(p = .003\)) with a sustained \(R^2\) of \(0.7329488\). We further verified granular correlations across the matrix: \(r = .492\) (\(p < .001\)) and \(r = -.322\). All variables were imported asynchronously and bound via \texttt{tools/import\_r\_tools.R}.
+
+\clearpage
+
+\section{Tables}\label{tables}
 
 \clearpage
 
 \begin{landscape}
 
-\section{Tables}\label{tables}
-
 \begin{table}
 
 \caption{\label{tbl-example}\textbf{Automated MultiIndex Tables.}\\
 \strut \\
-This table compiles directly from
-\texttt{sample\_data/table/table\_data.csv}. The backend R scripts
-auto-detect CSV arrays dropped into the \texttt{table\_dir}, mapping
-column string annotations (\texttt{::iqIndex}, \texttt{::iqFloat}) to
-natively construct nested booktabs without manual row-collapse logic.
-Note how \(p\)-values and mathematical strings like \(\chi^2\) are
-cleanly resolved horizontally through the \texttt{make\_table()}
-utility.}
+This table compiles directly from \texttt{sample\_data/table/table\_data.csv}. The backend R scripts auto-detect CSV arrays dropped into the \texttt{table\_dir}, mapping column string annotations (\texttt{::iqIndex}, \texttt{::iqFloat}) to natively construct nested booktabs without manual row-collapse logic. Note how \(p\)-values and mathematical strings like \(\chi^2\) are cleanly resolved horizontally through the \texttt{make\_table()} utility.}
 
 \centering{
+
+\begingroup\renewcommand{\arraystretch}{1.15}
+\setlength{\defaultaddspace}{1.0em}
 
 \begin{tabular}[t]{lllllll}
 \toprule
@@ -303,16 +265,17 @@ utility.}
  & Baseline & 18.24 & 1.218392 & .124 & .346 & 15.23\\
 
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Control} & treat & 22.19 & 1.529384 & .234 & .013 & 18.99\\
-
+\addlinespace
  & Baseline & 24.32 & 1.829103 & -.052 & .884 & 8.12\\
 
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Group A} & treat & 31.53 & 2.193812 & .492 & < .001 & 2.44\\
-
+\addlinespace
  & Baseline & 12.02 & 0.928193 & -.322 & .004 & 4.19\\
 
 \multirow[t]{-2}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\raggedright\arraybackslash Group B} & treat & 29.19 & 2.019283 & .850 & < .001 & 26.54\\
 \bottomrule
 \end{tabular}
+\endgroup
 
 }
 
@@ -336,12 +299,7 @@ utility.}
 
 \caption{\label{fig-example}\textbf{Native Image Handling Pipeline.}\\
 \strut \\
-When an external figure is exported into the \texttt{figure\_dir} folder
-(\texttt{sample\_data/figure}), Quarto handles the indexing, but the
-Elsevier LaTeX compiler notoriously struggles with nested relative
-paths. Our \texttt{tools/copy\_figures.R} pre-flight hook actively
-solves this by transferring requested assets momentarily toward the root
-compilation context.}
+When an external figure is exported into the \texttt{figure\_dir} folder (\texttt{sample\_data/figure}), Quarto handles the indexing, but the Elsevier LaTeX compiler notoriously struggles with nested relative paths. Our \texttt{tools/copy\_figures.R} pre-flight hook actively solves this by transferring requested assets momentarily toward the root compilation context.}
 
 \end{figure}%
 
@@ -349,24 +307,17 @@ compilation context.}
 
 \section{Conclusion}\label{conclusion}
 
-By isolating complex metadata extraction, tabular configuration, and
-figure management into the \texttt{tools/} backend loop, the user
-writing the actual \texttt{manuscript.qmd} is free to use pure Markdown
-functionality, guaranteeing publication-ready PDFs equipped with CRediT
-contribution trackers at every render sequence.
+By isolating complex metadata extraction, tabular configuration, and figure management into the \texttt{tools/} backend loop, the user writing the actual \texttt{manuscript.qmd} is free to use pure Markdown functionality, guaranteeing publication-ready PDFs equipped with CRediT contribution trackers at every render sequence.
 
 \section{Acknowledgements}\label{acknowledgements}
 
-The authors wish to thank the Quarto development community and the R
-Foundation for Statistical Computing for creating robust scholarly
-scaffolding tools.
+The authors wish to thank the Quarto development community and the R Foundation for Statistical Computing for creating robust scholarly scaffolding tools.
 
 \clearpage
 
 \section{Author Contributions}\label{author-contributions}
 
-\textbf{Harry Potter}: Conceptualization, Methodology, Writing -
-Original Draft.
+\textbf{Harry Potter}: Conceptualization, Methodology, Writing - Original Draft.
 
 \textbf{Hermione Granger}: Supervision, Writing - Review \& Editing.
 
